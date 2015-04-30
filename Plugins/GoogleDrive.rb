@@ -30,7 +30,8 @@ require 'user'
 	# puts users = Jdclouduser.where(name: "jiadong", password: "12344321").as_json
 	# users = users.map{|x|  {x["cloudtype"] => x["key"]}}
 	# puts users
-	user_control.update_account_record("katherine", "katherine", 1,  "12345543")
+	#user_control.update_account_record("katherine", "katherine", 1,  "12345543")
 	#puts Jdclouduser.where(name: "jiadong", password: "12344321", cloudtype: 1).first.as_json["id"]
+
+	#puts Jdclouduser.all.as_json
 	
-	puts Jdclouduser.all.as_json
