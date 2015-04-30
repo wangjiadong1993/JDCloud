@@ -1,8 +1,8 @@
 require "sqlite3"
 require 'pathname'
-
+require 'active_record'
 class Recorder
-	@db_pn
+	attr_reader :db_pn
 	attr_reader :db
 
 	def initialization
@@ -27,6 +27,12 @@ class Recorder
 
 		@db_pn = pn
 		open_database
+
+		create_table_for_users_if_not_exist
+	end
+
+	def get_absolute_dir_to_database
+		@db_pn.realpath.to_s
 	end
 
 	def create_dir pn
@@ -54,10 +60,21 @@ class Recorder
 	end
 
 	def create_connection
-
+			ActiveRecord::Base.establish_connection(
+  				adapter:  "sqlite3",
+  				database: @db_pn.realpath.to_s
+			)
 	end
 	def close_database
 		@db.close
+	end
+
+	def create_table_for_users_if_not_exist
+		db.execute("CREATE TABLE IF NOT EXISTS JDCLOUDUSERS (	id          INTEGER PRIMARY KEY,
+																name 		VARCHAR(100), 
+																password 	VARCHAR(100),
+																cloudtype 	INTEGER, 
+																key 		VARCHAR(100) ) ")
 	end
 end
 
