@@ -79,10 +79,10 @@ class Recorder
 end
 
 ##########class test
-$LOAD_PATH << File.join(File.dirname(__FILE__), "..")
-require 'preference'
-recorder = Recorder.new
-recorder.check_existance_of_the_given_dir_in_preference_and_return_handler
+# $LOAD_PATH << File.join(File.dirname(__FILE__), "..")
+# require 'preference'
+# recorder = Recorder.new
+# recorder.check_existance_of_the_given_dir_in_preference_and_return_handler
 
 
 

@@ -1,8 +1,7 @@
 require 'rubygems'
 require 'google/api_client'
 require 'record'
-
-
+require 'preference'
 module Googledrive
 	
 	class Session
@@ -83,21 +82,34 @@ module Googledrive
 			@client.authorization.refresh_token
 		end
 	#record saving for multi-user system
-		def create_refresh_token_under_an_account 
+		def update_refresh_token_under_an_account user_control_instance, name, password
+			if Preference::Global_default_user == true
+				name = Preference::Global_user_name.to_s
+				password = Preference::Global_user_password.to_s
+				if name.nil? || name == "" || password.nil? || password == ""
+					raise "please set your user name and password"
+				end
+			begin
+				#user_control_instance.update_account_record name, password, Preference::Google_drive_cloudtype, @refresh_token
+			rescue
+			end
+
+			else
+				raise "have not finished yet, please wait"
+			end
+		end
+
+		# def update_refresh_token_under_an_account name, password, cloudtype, key
+
+		# end
+
+		def create_account name, password
 
 		end
 
-		def update_refresh_token_under_an_account
+		# def authenticate_local_account
 
-		end
-
-		def create_account
-
-		end
-
-		def authenticate_local_account
-
-		end
+		# end
 
 		#not implement yet
 private

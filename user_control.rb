@@ -1,7 +1,8 @@
 require 'recorder'
+require 'active_record'
 require 'user'
 require 'preference'
-
+module Googledrive
 	class Usercontrol
 		@db_recorder
 		def initialize
@@ -55,3 +56,4 @@ private
 		end
 
 	end
+end

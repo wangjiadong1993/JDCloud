@@ -32,5 +32,5 @@ require 'user'
 	# puts users
 	user_control.update_account_record("katherine", "katherine", 1,  "12345543")
 	#puts Jdclouduser.where(name: "jiadong", password: "12344321", cloudtype: 1).first.as_json["id"]
-
+	
 	puts Jdclouduser.all.as_json
