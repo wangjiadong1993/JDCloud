@@ -2,6 +2,7 @@ require 'rubygems'
 require 'google/api_client'
 require 'record'
 
+
 module Googledrive
 	
 	class Session
@@ -22,8 +23,14 @@ module Googledrive
 			@client_secret = nil
 			@client_id = nil
 			@record = nil
+
+			@client = Google::APIClient.new
+			@drive = @client.discovered_api('drive', 'v2')
+
 		end
 
+
+	#record reading
 		def get_id_and_secret_directly id=nil, secret=nil
 			if id.nil? || secret.nil?
 				@client_id = @client_secret = nil
@@ -54,26 +61,53 @@ module Googledrive
 			else
 				@client_secret = @record.google_secret
 				@client_id = @record.google_id
-			end
+			end 
+		end
+	#authentication
+		def initialize_drive
+
+			@client.authorization.client_id = @client_id
+			@client.authorization.client_secret = @client_secret
+			@client.authorization.scope = OAUTH_SCOPE
+			@client.authorization.redirect_uri = REDIRECT_DIR
 		end
 
-
-
-		def exchange_refresh_token
-
+		def exchange_refresh_token refresh_token_param
+			@client.authorization.refresh_token = refresh_token_param
+			puts @@client.authorization.fetch_access_token!
 		end
 
 		def grant_refresh_token_for_the_first_time
+			uri = @client.authorization.authorization_uri
+			puts uri
+			@client.authorization.code = gets.chomp
+			@client.authorization.fetch_access_token!
+			@client.authorization.refresh_token
+		end
+	#record saving for multi-user system
+		def create_refresh_token_under_an_account 
+			
+		end
+
+		def update_refresh_token_under_an_account
 
 		end
 
+		def create_account
 
+		end
+
+		def authenticate_local_account
+
+		end
 
 		#not implement yet
-
+private
 		def customise_the_redirect_dir
 
 		end
+
+		def 
 
 	end
 end
