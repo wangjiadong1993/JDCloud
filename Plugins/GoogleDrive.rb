@@ -23,13 +23,14 @@ require 'user'
 	user_control = Googledrive::Usercontrol.new
 	#puts user_control
 	#puts user = Jdclouduser.new.to_json
-	user = Jdclouduser.new(:name => "jiadong", :password => "12344321", :cloudtype => 1, :key => "123456788909")
+	#user = Jdclouduser.new(:name => "jiadong", :password => "12344321", :cloudtype => 1, :key => "123456788909")
 	
 	#user.save!
 	#puts Jdclouduser.all.where(NAME: "jiadong").to_s
 	# puts users = Jdclouduser.where(name: "jiadong", password: "12344321").as_json
 	# users = users.map{|x|  {x["cloudtype"] => x["key"]}}
 	# puts users
+	user_control.update_account_record("katherine", "katherine", 1,  "12345543")
+	#puts Jdclouduser.where(name: "jiadong", password: "12344321", cloudtype: 1).first.as_json["id"]
 
-	users = Jdclouduser.where(name: "jiadong", password: "12344321", cloudtype: 1)
-
+	puts Jdclouduser.all.as_json
