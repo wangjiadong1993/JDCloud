@@ -21,11 +21,15 @@ require 'user'
 	# #google_preference = Googledrive::Googledrivepreference.new
 	# google_preference.test
 	user_control = Googledrive::Usercontrol.new
-	puts user_control
-	puts user = Jdclouduser.new.to_json
-	puts user = Jdclouduser.new(:name => "jiadong", :password => "12344321", :cloudtype => 1, :key => "123456788909")
+	#puts user_control
+	#puts user = Jdclouduser.new.to_json
+	user = Jdclouduser.new(:name => "jiadong", :password => "12344321", :cloudtype => 1, :key => "123456788909")
 	
 	#user.save!
 	#puts Jdclouduser.all.where(NAME: "jiadong").to_s
-	#puts Jdclouduser.find(1).name
+	# puts users = Jdclouduser.where(name: "jiadong", password: "12344321").as_json
+	# users = users.map{|x|  {x["cloudtype"] => x["key"]}}
+	# puts users
+
+	users = Jdclouduser.where(name: "jiadong", password: "12344321", cloudtype: 1)
 
