@@ -1,22 +1,24 @@
-class User
-	@user_id
-	@user_password
-	@user_name
-	@user_email
-	@account_type
-	def initialize
+require 'rubygems'  
+require 'active_record' 
+class User < ActiveRecord::Base
 
-	end
+		def create_user hash_obj
+			
+		end
 
-	def new
+		def update_user id, hash_obj
+			raise "not inheritanced"
+		end
 
-	end
+		def delete_user id, passwd
+			raise "not inheritanced"
+		end
 
-	def update
+		def index_users
+			raise "not inheritanced"
+		end
 
-	end
-
-	def delete
-
-	end 
+		def show_user id
+			raise "not inheritanced"
+		end 
 end

@@ -3,6 +3,7 @@ $LOAD_PATH << File.join(File.dirname(__FILE__), "..")
 
 require "session"
 require 'google_drive_preference_control'
+require 'sqlite3'
 	# dir = File.join(File.dirname(__FILE__), "..","..", "client_secrets.json")
 	# #puts dir
 	# session = Googledrive::Session.new

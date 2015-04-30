@@ -17,8 +17,6 @@ module Googledrive
 		OAUTH_SCOPE = 'https://www.googleapis.com/auth/drive'
 		REDIRECT_DIR = 'urn:ietf:wg:oauth:2.0:oob'
 
-
-
 		def initialize	
 			@client_secret = nil
 			@client_id = nil
@@ -86,7 +84,7 @@ module Googledrive
 		end
 	#record saving for multi-user system
 		def create_refresh_token_under_an_account 
-			
+
 		end
 
 		def update_refresh_token_under_an_account
@@ -107,7 +105,6 @@ private
 
 		end
 
-		def 
 
 	end
 end
